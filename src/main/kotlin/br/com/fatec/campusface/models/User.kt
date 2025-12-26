@@ -1,41 +1,39 @@
 package br.com.fatec.campusface.models
-import com.google.cloud.firestore.annotation.Exclude
+import jakarta.persistence.*
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import java.time.Instant
 
 
+@Entity
+@Table(name = "users")
 data class User(
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     val id: String = "",
+    @Column(nullable = false)
     val fullName: String = "",
+
+    @Column(unique = true, nullable = false)
     val email: String = "",
+
+    @Column(nullable = false)
     val hashedPassword: String = "", // será criptografada
+
     val document: String = "",
     val faceImageId: String? = "",
+
     val createdAt: Instant = Instant.now(),
     val updatedAt: Instant = Instant.now()
 ): UserDetails {
-    @Exclude
     override fun getAuthorities(): Collection<GrantedAuthority> {
         return emptyList()
     }
-
-    @Exclude
     override fun getPassword(): String = hashedPassword
-
-    @Exclude
     override fun getUsername(): String = email
-
-    @Exclude
     override fun isAccountNonExpired(): Boolean = true
-
-    @Exclude
     override fun isAccountNonLocked(): Boolean = true
-
-    @Exclude
     override fun isCredentialsNonExpired(): Boolean = true
-
-    @Exclude
     override fun isEnabled(): Boolean = true
 
 }
