@@ -109,7 +109,7 @@ class UserService(
         return userRepository.findByEmail(email)?.toDTO()
     }
 
-    fun getUserById(id: String): UserDTO? {
+    fun findById(id: String): UserDTO? {
         return userRepository.findById(id)?.toDTO()
     }
 
