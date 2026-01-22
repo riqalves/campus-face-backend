@@ -14,14 +14,5 @@ data class OrganizationMember(
     val updatedAt: Instant = Instant.now()
 )
 
-enum class Role {
-    MEMBER,
-    VALIDATOR,
-    ADMIN
-}
 
-enum class MemberStatus {
-    PENDING,
-    ACTIVE,
-    INACTIVE,
-}
+

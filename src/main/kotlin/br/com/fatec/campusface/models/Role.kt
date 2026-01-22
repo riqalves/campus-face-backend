@@ -1,4 +1,7 @@
 package br.com.fatec.campusface.models
 
-class Role {
+enum class Role {
+    MEMBER,
+    VALIDATOR,
+    ADMIN
 }

@@ -5,7 +5,7 @@ import java.time.Instant
 data class RegisteredClient(
     val id: String = "",
     val organizationId: String = "",
-    val machineId: String = "", // Novo campo
+    val machineId: String = "",
     val ipAddress: String = "",
     val name: String = "",
 
@@ -16,8 +16,3 @@ data class RegisteredClient(
     val updatedAt: Instant = Instant.now(),
 )
 
-enum class ClientStatus{
-    ONLINE,
-    OFFLINE,
-    UNREACHABLE,
-}

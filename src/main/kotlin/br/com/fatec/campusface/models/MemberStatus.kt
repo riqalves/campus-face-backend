@@ -1,4 +1,7 @@
 package br.com.fatec.campusface.models
 
-class MemberStatus {
+enum class MemberStatus {
+    PENDING,
+    ACTIVE,
+    INACTIVE,
 }
