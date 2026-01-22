@@ -7,8 +7,6 @@ import br.com.fatec.campusface.models.User
 import br.com.fatec.campusface.service.UserService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
-import io.swagger.v3.oas.annotations.media.Content
-import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse as SwaggerApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
@@ -50,7 +48,7 @@ class UserController(private val userService: UserService) {
                 .body(ApiResponse(success = false, message = "Acesso negado aos dados de outro usuário.", data = null))
         }
 
-        val userDto = userService.getUserById(id)
+        val userDto = userService.findById(id)
         return if (userDto != null) {
             ResponseEntity.ok(ApiResponse(success = true, message = "Usuário encontrado.", data = userDto))
         } else {

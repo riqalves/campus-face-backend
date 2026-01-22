@@ -65,7 +65,7 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-// Configuração do JaCoCo
+// Configuração do JaCoCoq
 tasks.test {
 	finalizedBy(tasks.jacocoTestReport) // Gera o relatório logo após rodar os testes
 }
