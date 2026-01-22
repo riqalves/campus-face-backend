@@ -32,8 +32,10 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 
-	// https://mvnrepository.com/artifact/com.google.firebase/firebase-admin
-	implementation("com.google.firebase:firebase-admin:9.5.0")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.flywaydb:flyway-core")
+	runtimeOnly("org.postgresql:postgresql")
+	runtimeOnly("com.h2database:h2")
 
 	implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
@@ -49,11 +51,11 @@ dependencies {
 	implementation ("com.auth0:java-jwt:4.5.0")
 
 	implementation("com.cloudinary:cloudinary-http44:1.39.0") {
-		// excluir o commons-logging
 		exclude(group = "commons-logging", module = "commons-logging")
 	}
 
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testImplementation("org.springframework.security:spring-security-test")
@@ -72,7 +74,7 @@ tasks.jacocoTestReport {
 	dependsOn(tasks.test) // Garante que os testes rodem antes
 	reports {
 		xml.required.set(true)
-		html.required.set(true) // Gera o site HTML para você tirar print
+		html.required.set(true)
 	}
 }
 
